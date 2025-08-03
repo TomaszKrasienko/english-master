@@ -1,0 +1,22 @@
+services:
+
+  postgres:
+    image: postgres
+    container_name: english-master-postgres
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=rootpwd
+    ports:
+      - 8001:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - english-master-network
+
+volumes:
+  postgres:
+    driver: local
+
+networks:
+  english-master-network:
+    driver: bridge

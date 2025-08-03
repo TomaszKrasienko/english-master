@@ -1,0 +1,6 @@
+@english_master_HostAddress = http://localhost:5125
+
+GET {{english_master_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
