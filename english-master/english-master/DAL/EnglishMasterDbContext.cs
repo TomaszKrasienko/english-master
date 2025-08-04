@@ -9,6 +9,9 @@ public sealed class EnglishMasterDbContext(DbContextOptions<EnglishMasterDbConte
 {
     public DbSet<Topic> Topics { get; set; }
     public DbSet<Word> Words { get; set; }
+    public DbSet<PracticeSet> PracticeSets { get; set; }
+    public DbSet<PracticeSetTemplate> PracticeSetTemplates { get; set; }
+    public DbSet<Result> Results { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

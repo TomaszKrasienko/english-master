@@ -12,7 +12,7 @@ public class DataSeeder(IServiceProvider serviceProvider) : IHostedService
 
         if (await dbContext.Topics.AnyAsync(cancellationToken)) return;
 
-        var topics = new[]
+        var topics = new List<Topic>
         {
             Topic.Create(Guid.NewGuid(), "Phrasal Verbs"),
             Topic.Create(Guid.NewGuid(), "Business English"),

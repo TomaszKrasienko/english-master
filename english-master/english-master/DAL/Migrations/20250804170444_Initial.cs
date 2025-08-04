@@ -7,13 +7,13 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace english_master.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "PracticeSet",
+                name: "PracticeSets",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -23,11 +23,11 @@ namespace english_master.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PracticeSet", x => x.Id);
+                    table.PrimaryKey("PK_PracticeSets", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PracticeSetTemplate",
+                name: "PracticeSetTemplates",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -36,11 +36,11 @@ namespace english_master.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PracticeSetTemplate", x => x.Id);
+                    table.PrimaryKey("PK_PracticeSetTemplates", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Topic",
+                name: "Topics",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "character varying(36)", maxLength: 36, nullable: false),
@@ -48,11 +48,11 @@ namespace english_master.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Topic", x => x.Id);
+                    table.PrimaryKey("PK_Topics", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Word",
+                name: "Words",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "character varying(36)", maxLength: 36, nullable: false),
@@ -62,11 +62,11 @@ namespace english_master.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Word", x => x.Id);
+                    table.PrimaryKey("PK_Words", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Word_Topic_TopicId",
+                        name: "FK_Words_Topics_TopicId",
                         column: x => x.TopicId,
-                        principalTable: "Topic",
+                        principalTable: "Topics",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -82,21 +82,21 @@ namespace english_master.DAL.Migrations
                 {
                     table.PrimaryKey("PK_PracticeSetTemplateWord", x => new { x.SetsId, x.WordsId });
                     table.ForeignKey(
-                        name: "FK_PracticeSetTemplateWord_PracticeSetTemplate_SetsId",
+                        name: "FK_PracticeSetTemplateWord_PracticeSetTemplates_SetsId",
                         column: x => x.SetsId,
-                        principalTable: "PracticeSetTemplate",
+                        principalTable: "PracticeSetTemplates",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PracticeSetTemplateWord_Word_WordsId",
+                        name: "FK_PracticeSetTemplateWord_Words_WordsId",
                         column: x => x.WordsId,
-                        principalTable: "Word",
+                        principalTable: "Words",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Result",
+                name: "Results",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "character varying(36)", maxLength: 36, nullable: false),
@@ -106,17 +106,17 @@ namespace english_master.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Result", x => x.Id);
+                    table.PrimaryKey("PK_Results", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Result_PracticeSet_PracticeSetId",
+                        name: "FK_Results_PracticeSets_PracticeSetId",
                         column: x => x.PracticeSetId,
-                        principalTable: "PracticeSet",
+                        principalTable: "PracticeSets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Result_Word_WordId",
+                        name: "FK_Results_Words_WordId",
                         column: x => x.WordId,
-                        principalTable: "Word",
+                        principalTable: "Words",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -127,18 +127,18 @@ namespace english_master.DAL.Migrations
                 column: "WordsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Result_PracticeSetId",
-                table: "Result",
+                name: "IX_Results_PracticeSetId",
+                table: "Results",
                 column: "PracticeSetId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Result_WordId",
-                table: "Result",
+                name: "IX_Results_WordId",
+                table: "Results",
                 column: "WordId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Word_TopicId",
-                table: "Word",
+                name: "IX_Words_TopicId",
+                table: "Words",
                 column: "TopicId");
         }
 
@@ -149,19 +149,19 @@ namespace english_master.DAL.Migrations
                 name: "PracticeSetTemplateWord");
 
             migrationBuilder.DropTable(
-                name: "Result");
+                name: "Results");
 
             migrationBuilder.DropTable(
-                name: "PracticeSetTemplate");
+                name: "PracticeSetTemplates");
 
             migrationBuilder.DropTable(
-                name: "PracticeSet");
+                name: "PracticeSets");
 
             migrationBuilder.DropTable(
-                name: "Word");
+                name: "Words");
 
             migrationBuilder.DropTable(
-                name: "Topic");
+                name: "Topics");
         }
     }
 }

@@ -10,6 +10,7 @@
     <ItemGroup>
         <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.8" />
         <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.1.8" />
+        <PackageReference Include="HotChocolate.Execution" Version="15.1.8" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7">
@@ -17,6 +18,10 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="DAL\Migrations\" />
     </ItemGroup>
 
 </Project>

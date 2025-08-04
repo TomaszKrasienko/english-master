@@ -12,8 +12,8 @@ using english_master.DAL;
 namespace english_master.DAL.Migrations
 {
     [DbContext(typeof(EnglishMasterDbContext))]
-    [Migration("20250802154520_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250804170444_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,7 +57,7 @@ namespace english_master.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PracticeSet");
+                    b.ToTable("PracticeSets");
                 });
 
             modelBuilder.Entity("english_master.Models.PracticeSetTemplate", b =>
@@ -74,7 +74,7 @@ namespace english_master.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PracticeSetTemplate");
+                    b.ToTable("PracticeSetTemplates");
                 });
 
             modelBuilder.Entity("english_master.Models.Result", b =>
@@ -100,7 +100,7 @@ namespace english_master.DAL.Migrations
 
                     b.HasIndex("WordId");
 
-                    b.ToTable("Result");
+                    b.ToTable("Results");
                 });
 
             modelBuilder.Entity("english_master.Models.Topic", b =>
@@ -116,7 +116,7 @@ namespace english_master.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Topic");
+                    b.ToTable("Topics");
                 });
 
             modelBuilder.Entity("english_master.Models.Word", b =>
@@ -142,7 +142,7 @@ namespace english_master.DAL.Migrations
 
                     b.HasIndex("TopicId");
 
-                    b.ToTable("Word");
+                    b.ToTable("Words");
                 });
 
             modelBuilder.Entity("PracticeSetTemplateWord", b =>
