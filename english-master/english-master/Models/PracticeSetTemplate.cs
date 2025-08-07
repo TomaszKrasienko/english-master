@@ -9,12 +9,15 @@ public class PracticeSetTemplate
 
     private PracticeSetTemplate() { }
     
-    private PracticeSetTemplate(int id, string name)
+    private PracticeSetTemplate(string name)
     {
-        Id = id;
         Name = name;
     }
 
-    public static PracticeSetTemplate Create(int id, string name)
-        => new(id, name);
+    public static PracticeSetTemplate Create(string name, IReadOnlyCollection<Word> words)
+    {
+        var template = new PracticeSetTemplate(name);
+        template._words.AddRange(words);
+        return template;
+    } 
 }

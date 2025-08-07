@@ -1,9 +1,9 @@
-namespace english_master.Queries;
+namespace english_master.Mutations;
 
 /// <summary>
 /// Marker used as base query for possible queries extending  
 /// </summary>
-public class EnglishMasterQuery
+public class EnglishMasterMutation
 {
     
 }

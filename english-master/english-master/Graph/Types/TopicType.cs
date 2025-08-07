@@ -3,7 +3,6 @@ using english_master.Queries;
 
 namespace english_master.Graph.Types;
 
-[ExtendObjectType(typeof(EnglishMasterQuery))]
 public sealed class TopicType : ObjectType<Topic>
 {
     protected override void Configure(IObjectTypeDescriptor<Topic> descriptor)
